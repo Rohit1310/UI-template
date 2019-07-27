@@ -10,9 +10,12 @@ library(leaflet)
 shinyServer(function(input, output,session) {
   
   output$mymap <- renderLeaflet({
-    leaflet(options = leafletOptions(doubleClickZoom= FALSE)) %>%
+    leaflet(options = leafletOptions(doubleClickZoom= FALSE,zoomControl = FALSE)) %>%
       addTiles(urlTemplate = "http://mt0.google.com/vt/lyrs=s,h&hl=en&x={x}&y={y}&z={z}&s=Ga",attribution = "GOOGLE")%>%
-      setView(  lat = 51.752520,lng =  15.894911, zoom = 5)
+      setView(  lat = 51.752520,lng =  15.894911, zoom = 5)%>%
+      htmlwidgets::onRender("function(el, x) {
+        L.control.zoom({ position: 'topright' }).addTo(this)
+    }")
   })
   
 })
