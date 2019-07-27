@@ -8,6 +8,7 @@ library(shiny)
 library(shinydashboard)
 library(shinydashboardPlus)
 library(shinyWidgets)
+library(leaflet)
 
 source(paste0(getwd(),"/body.R"))
 source(paste0(getwd(),"/leftBar.R"))
